@@ -83,7 +83,7 @@
 							<a href="./cart.jsp" class="btn btn-lg btn-warning mx-3">장바구니</a>
 							
 							<!-- 페이지 이동 막기 :  href="javascript:;" -->			
-							<a href="javascript:;" class="btn btn-lg btn-success mx-3" onclick="addToCart()">주문하기</a>
+							<a href="javascript:;" class="btn btn-lg btn-success mx-3"  data-product-id="<%= pdId %>" onclick="addToCart(this)">주문하기</a>
 						</div>
 					</form>
 				</div>
@@ -97,11 +97,12 @@
 
 
 	<script>
-	
+		
 		// 장바구니 추가
-		function addToCart() {
+		function addToCart(element) {
+			const productId = element.getAttribute('data-product-id');
 			if( confirm("상품을 장바구니에 추가하시겠습니까?") ) {
-				document.addForm.submit()
+				location.href = 'addCart.jsp?cartId='+ encodeURIComponent(productId);
 			} else {
 				document.addForm.reset()
 			}

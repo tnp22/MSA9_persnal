@@ -24,7 +24,6 @@
 	<!-- 배송 정보 입력 -->
 	<div class="container shop mb-5 p-4">
 		<form action="ship_pro.jsp" class="form-horizontal" method="post">
-			<input type="hidden" name="cartId" value="40086207C6B6C1C81C094824509E3994" />
 			<div class="input-group mb-3 row">
 				<label class="input-group-text col-md-2" id="">성명</label>
 				<input type="text" class="form-control col-md-10" name="name"
@@ -61,7 +60,7 @@
 				<div class="item">
 					<a href="cart.jsp" class="btn btn-lg btn-success">이전</a>
 					<!-- 취소 프로세스는 이어서... -->				
-					<a href="/Shop/" class="btn btn-lg btn-danger">취소</a>				
+					<a href="../index.jsp" class="btn btn-lg btn-danger">취소</a>				
 				</div>
 				<div class="item">
 					<input type="submit" class="btn btn-lg btn-primary" value="등록" />
