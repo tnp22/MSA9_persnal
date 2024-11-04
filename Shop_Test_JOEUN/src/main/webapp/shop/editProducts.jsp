@@ -66,10 +66,8 @@
 								<a href="./update.jsp?id=<%=prList.get(i).getProductId()%>"
 										   class="btn btn-primary mx-2">수정</a>
 								<!-- [NEW] 삭제 버튼 추가 -->
-
-								<a href="javascript:;"
-										   class="btn btn-danger mx-2"
-										   onclick="deleteProduct(<%=prList.get(i).getProductId()%>)">삭제</a>
+								<a href="javascript: ;" class="btn btn-danger mx-2" data-product-id="<%= prList.get(i).getProductId() %>" 
+   									onclick="deleteProduct(this)">삭제</a>
 							</p>
 						</div>						
 					</div>
@@ -81,18 +79,25 @@
 	</div>
 	
 	
+	<script>
+	function deleteProduct(element) {
+		
+		const productId = element.getAttribute('data-product-id');
+		let check = confirm(productId+'를 정말로 삭제하시겠습니까?');
+ 		if( check ) {
+			// 로딩 메시지 표시 (선택사항)
+			document.body.insertAdjacentHTML('beforeend', '<div id="loading">삭제 중...</div>');
+		
+			location.href = 'delete_pro.jsp?id=' + encodeURIComponent(productId);
+		}
+	}
+	
+</script>
+	
 	<jsp:include page="/layout/footer.jsp" />
 	<jsp:include page="/layout/script.jsp" />
 	
-	<script>
-		function deleteProduct(productId) {
-			// alert(productId)
-			let check = confirm('정말로 삭제하시겠습니까?')
-			if( check ) {
-				location.href = 'delete_pro.jsp?id=' + productId
-			} 
-		}
-	</script>
+
 </body>
 </html>
 

@@ -221,7 +221,7 @@ public class ProductRepository extends JDBConnection {
 				+ " WHERE product_id = ?";
 		try (PreparedStatement psmt = con.prepareStatement(sql);){
 			psmt.setString(1, productId);
-			result = psmt.executeUpdate() == 0 ? 0:1;
+			result = psmt.executeUpdate();
 		} catch (Exception e) {
 			System.err.println("productDAO : delete시 예외 발생");
 		}
